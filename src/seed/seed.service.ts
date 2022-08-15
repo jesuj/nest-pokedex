@@ -7,6 +7,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AxiosAdapter } from '../common/adapters/axios.adapter';
 import { FetchAdapter } from 'src/common/adapters/fetch.adapter';
+import { LimitSeed } from 'src/common/dto/limit-seed';
 
 @Injectable()
 export class SeedService {
@@ -20,10 +21,11 @@ export class SeedService {
     private readonly http:FetchAdapter,
   ){};
 
-  async executeSeed(){
+  async executeSeed(query:LimitSeed){
+    const {limit = 600} = query;
     await this.pokemonModel.deleteMany({});
 
-    const data =await this.http.get<PokeResponse>('https://pokeapi.co/api/v2/pokemon?limit=600')
+    const data =await this.http.get<PokeResponse>(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
     
     // const insertPromisesArray = [];
     const pokemonToInsert: {name:string,no:number}[] =[];
@@ -31,7 +33,7 @@ export class SeedService {
     data.results.forEach(async({name,url})=>{
       const segments = url.split('/');
       const no = +segments[segments.length-2]
-      console.log({name,no})
+      // console.log({name,no})
       // insertPromisesArray.push(
       //   this.pokemonModel.create({name,no})
       // )

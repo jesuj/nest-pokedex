@@ -16,9 +16,13 @@ npm i -g @nestjs/cli
 ```
 docker-compose up -d
 ```
-5. Reconstruir la base de datos con la semilla
+5. Reconstruir la base de datos con la semilla(por defecto 600 pokemones)
 ```
 http://localhost:3000/api/v2/seed
+```
+6. Especificar una determinada cantidad de seed (Maximo 100000)
+```
+http://localhost:3000/api/v2/seed?limit=100
 ```
 # Stack usado
 * MongoDB
