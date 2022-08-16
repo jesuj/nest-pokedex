@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import axios, { AxiosInstance } from 'axios';
-import { PokeResponse } from '../../dist/seed/interfaces/pokemon-response';
 import { PokemonService } from '../pokemon/pokemon.service';
 import { Pokemon } from '../pokemon/entities/pokemon.entity';
 import { InjectModel } from '@nestjs/mongoose';
@@ -8,6 +7,7 @@ import { Model } from 'mongoose';
 import { AxiosAdapter } from '../common/adapters/axios.adapter';
 import { FetchAdapter } from 'src/common/adapters/fetch.adapter';
 import { LimitSeed } from 'src/common/dto/limit-seed';
+import { PokeResponse } from './interfaces/poke-response.interface';
 
 @Injectable()
 export class SeedService {
