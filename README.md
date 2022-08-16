@@ -28,11 +28,18 @@ yarn start:dev
 9. Reconstruir la base de datos con la semilla(por defecto 600 pokemones)
 ```
 http://localhost:3000/api/v2/seed
-```
-10. Especificar una determinada cantidad de seed (Maximo 100000)
-```
-http://localhost:3000/api/v2/seed?limit=100
-```
+``` 
 # Stack usado
 * MongoDB
 * Nest
+
+# Notas
+Especificar una determinada cantidad de seed (Maximo 100000):
+```
+http://localhost:3000/api/v2/seed?limit=100
+```
+Heroku redeploy sin cambios:
+```
+git commit --allow-empty -m "Tigger Heroku deploy"
+git push heroku <master|main>
+```
