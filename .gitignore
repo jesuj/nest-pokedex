@@ -2,7 +2,8 @@
 /dist
 /node_modules
 
-mongo
+/mongo
+.env
 # Logs
 logs
 *.log
